@@ -143,6 +143,14 @@ declare function get<T>(): T;
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ [T]
     get<null|undefined>() != undefined;
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ [F]
+
+    get<{ [key: string]: string }>()['foo'] === undefined
+    get<{ [key: string]: string }>()['foo'] === null
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ [F]
+    get<{ [key: string]: string }>()['foo'] == undefined
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ [Use '=== undefined' instead.]
+    get<{ [key: string]: string }>()['foo'] == null
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ [Use '=== undefined' instead.]
 }
 
 // negation
